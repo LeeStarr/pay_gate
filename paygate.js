@@ -67,6 +67,10 @@ const aquireOp=document.querySelector(".aquireOp");
 const sumDateLabel=document.querySelector(".sumDateLabel");
 const sumDateDisplay=document.querySelector(".sumDateDisplay");
 
+//popup elements
+const popupBtn= document.querySelector("#popupBtn");
+const popupBar= document.querySelector(".popupbar");
+
 //validation functions
 function checkName(){
     var errorMsg=document.querySelector("#nameError");
@@ -292,6 +296,8 @@ function checkDate(){
         errorMsg.innerHTML="You need to select a date";
         return false;
     }else{
+        date.style.border="#bbb 2px solid";
+        errorMsg.innerHTML="";
         return true;
     }
 }
@@ -608,6 +614,17 @@ prev4.addEventListener('click',()=>{
 
 })
 
+/*P O P U P    T R A N S I T I O N S*/
+popupBtn.addEventListener('click', ()=>{
+    if (popupBtn.innerHTML=='^')
+    {
+        popupBar.style.top="300px";
+        popupBtn.innerHTML="v";
+    }else{
+        popupBar.style.top="500px";
+        popupBtn.innerHTML="^";
+    }
+})
 
 
 

@@ -1,3 +1,6 @@
+<!--<?php
+session_start();
+?>-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +10,10 @@
     <title>Document</title>
 </head>
 <body>
+
+<!--<style>
+    <?php include "paygateStyle.css";?>
+</style>-->
     <div class="all">
 
         <div class="payNav">
@@ -216,14 +223,14 @@
                         <br><hr>
 
                         <div class="section2">
-                            <img class="carImg" src="https://media.architecturaldigest.com/photos/63079fc7b4858efb76814bd2/16:9/w_1600%2Cc_limit/9.%2520DeLorean-Alpha-5%2520%255BDeLorean%255D.jpg">
+                            <img class="carImg" src="<?php echo $_SESSION['picture'] ?>">
 
                             <div class="info">
                                 <div class="carName">
-                                    CarModel Name XV34  
+                                    <?php echo $_SESSION['name']; ?>  
                                 </div><br>
                                 <div class="total">
-                                    R 000 000.00
+                                    R 0.00
                                 </div>
                             </div>
                         </div>
@@ -234,7 +241,7 @@
                             <div></div>
                             <div></div>
                             <div class="pbdName">Base Price <hr></div>
-                            <div class="pbdAmt">R 000 000.00 <hr></div>
+                            <div class="pbdAmt">R <?php echo $_SESSION['price']?> <hr></div>
                         </div>
                         
                         <div class="pbdContain">
@@ -251,9 +258,10 @@
                                     <div class="name">CO2 Tax</div> 
                                     <div class="pbdAmt">R00.00</div> 
                                     <div class="name delivery">Delivery Charge</div> 
-                                    <div class="pbdAmt deliveryAmt" >R00.00</div>
+                                    <div class="pbdAmt deliveryAmt" >R1500.00</div>
+                                    <?php $vat=((int)$_SESSION['price'])*0.15 ?>
                                     <div class="name">VAT 15%</div> 
-                                    <div class="pbdAmt">R00.00</div>
+                                    <div class="pbdAmt">R<?php echo $vat?></div>
                                     <!--<div class="name">Reservation Fee</div><div class="pbdAmt"></div>--> 
                                 </div>
                                 <hr>
@@ -286,7 +294,7 @@
                     </div> 
                     
                 </form>
-
+                  
                 <button class="cont1">Continue</button> 
                 <button class="cont2">Continue</button>
                 <button class="cont3">Continue</button>
@@ -295,8 +303,28 @@
                 <button  class="prev2 prev">Previous</button>
                 <button  class="prev3 prev">Previous</button>
                 <button  class="prev4 prev">Previous</button>
+                <div class="popupbar">
+                    <button id="popupBtn" >^</button>
+                    <div class="popupInfo">  
+                        <img src="https://imageio.forbes.com/specials-images/imageserve/5d35eacaf1176b0008974b54/2020-Chevrolet-Corvette-Stingray/0x0.jpg?format=jpg&crop=4560,2565,x790,y784,safe&width=1440">
+
+                        <div class="popupCarDetails">
+                            <div class="specs">
+                                <label >MODEL</label>
+                                <p class="model"><?php echo $_SESSION['name']; ?></p>
+                            </div>
+                
+                            <div class="specs total">
+                                <label>TOTAL </label>
+                                <p class="total">R<?php echo $_SESSION['price']?></p>
+                
+                            </div>
+                
+                        </div>
+                    </div>
+                </div>
                    
-    
+              
             </div>
     
 <!--SIDE BAR -->   
@@ -312,7 +340,7 @@
     
                 <div class="specs total">
                     <label>TOTAL </label>
-                    <p class="total">R<?php echo $_SESSION['price']?>.00</p>
+                    <p class="total">R<?php echo $_SESSION['price']?></p>
     
                 </div>
     
@@ -336,4 +364,36 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
  
 </body>
+
+<!--<h3 class="title">Payment & Invoice</h3>
+
+                    <div class="detailInput">
+                       
+                        <input type="text" name="cardName" id="cardName" required >
+                        <label>Name on card </label>
+                        <div class="error" id="cardnameError"></div>
+                    </div>
+
+                    <div class="detailInput">
+                        <input type="text" name="cardNumber" id="cardNum" data-mask="0000 0000 0000 0000" required>
+                        <label>Card number</label>
+                        <div class="error" id="cardnumError"></div>
+                    </div>
+
+                    <div class="flex">
+                        <div class="detailInput">
+                            <input type="text" name="expDate" id="exp" data-mask="00 / 00" required>
+                            <label>Expiry Date </label>
+                            <div class="error" id="expError" ></div>
+                        </div>
+
+                        <div class="detailInput">
+                            <input type="text" name="ccv" id="cvv" data-mask="000" required>
+                            <label>CVV</label>
+                            <div class="error" id="cvvError"></div>
+                        </div>
+
+                    </div>
+                        <button class="checkout" name="submit" value="<?php echo $_SESSION['price']?>.00">Continue to Checkout</button>
+                </div> -->
 </html>
