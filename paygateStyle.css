@@ -53,7 +53,7 @@ body{
 }
 
 .conncetor-right, .connector-left{
-  position: relative;
+ position: relative;
   top: 15px;
   height: 2px;
   width: 100%;
@@ -68,7 +68,7 @@ hr{
   background-color: #e6e6e6;
 }
 .top span{
-  flex-basis: 10%;
+  position: relative;
   border-radius: 50%;
   border: silver 2px solid;
   width: 35px;
@@ -90,20 +90,20 @@ hr{
   margin-top: 950px;
 }
 .container{
-  margin-top: 25px;
-  margin-bottom: 100px;
   width: 100%;
-  height: 850px;
-  display: flex;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 2fr 1fr;
+  padding: 1rem 4rem;
+  
 }
 .col{
+  width: 100%;
   position: relative;
   overflow: hidden;
   height: 900px;
   background-color: #fff;
   box-shadow: 0 5px 10px rgba(0,0,0,.1);
-  margin-left: 65px;
-  width:50%;
 }
 
 .title{
@@ -125,6 +125,7 @@ hr{
 .paymentOption, .calculator, .personalInfo, .schedule, .payment{
   position: absolute;
   width: 100%;
+  height: 100%;
   margin-right: 100px;
   padding: 20px;
   transition: .3s;
@@ -404,11 +405,6 @@ form button{
   top: 830px;
 }
 
-i{
-  padding-top: 15px;
-  padding-left: 5px;
-  color: #555;
-}
 
 
 /*Side bar*/
@@ -418,9 +414,6 @@ i{
   background: none;
   position: sticky;
   top: 30px;
-  left: 800px;
-  width: 30%;
-  margin-right: 65px;
   margin-top: 30px;
 }
 
@@ -472,27 +465,40 @@ i{
 }
 
 /*M E D I A   Q U R I E S*/
-
-/* CREATE BRAKPOINT SO POPUP WILL DISPLAY FLEX COLUMN*/
-
 /*breakpoint 1*/
+@media (max-width:1165px) {
+  button{
+    height: 40px;
+    width: 230px;
+    
+  }
+  .prev{
+    right: 20px;
+    top: 850px;
+  }
+  form button{
+    top: 800px;
+  }
 
+}
+
+/*breakpoint 2*/
 @media (max-width:1025px) {
   /* N A V   B A R*/
   .box label{
     display: none;
   }
-
+ 
   /* C O N T A I N E R */
   .container{
-    flex-direction: column;
+    display: block;
     align-items: center;
+    padding: 1rem 1.5rem;
   }
   .col{
-    width: 90%;
-    margin-left: 0;
-    display: fle;
+    width: 100%;
   }
+ 
   /*S I D E   B A R*/
   .carDetails{
     display: none;
@@ -501,7 +507,7 @@ i{
   /*P O P U P*/
   .popupbar{
     position: fixed;
-    width: 90%;
+    width: 95%;
     top: 500px;
     display: flex;
     flex-direction: column;
@@ -511,23 +517,73 @@ i{
   .popupbar button{
     position: relative;
     width: 60px;
-    height: 25px;
+    height: 30px;
     padding-bottom: 2px;
     font-size:20px;
     font-weight: bolder;
+    border: #fff 3px solid;
   }
 
   .popupbar button:hover{
     font-size:22px;
   }
   .popupInfo{
+    position: relative;
     border-top: #1c69d4 5px solid;
     background-color: #e6e6e6;
     width: 100%;
     display: flex;
   }
   .popupInfo img{
-    width: 500px;
+    width: 300px;
   }
 }
+
+/*breakpoint 3*/
+
+@media (max-width:760px) {
+  button{
+    height: 40px;
+    width: 200px;
+    
+  }
+
+  .prev{
+    top: 850px;
+  }
+}
+
+/*breakpoint 4*/
+
+@media (max-width:706px) {
+  .cont1{
+  top: 470px;
+  right: 20px ;
+  
+}
+
+
+}
+
+@media (max-width:682px) {
+  .col{
+    height: 1000px;
+  }
+
+  .cont4, form button{
+    top: 900px;
+  }
+
+  .prev3,.prev4{
+    top: 950px;
+  }
+
+  .cont4, .prev3{
+    right: 10px;
+  }
+
+
+}
+
+
 

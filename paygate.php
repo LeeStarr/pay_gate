@@ -1,19 +1,19 @@
-<!--<?php
+<?php
 session_start();
-?>-->
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="paygateStyle.css">
+    <!--<link rel="stylesheet" href="paygateStyle.css">-->
     <title>Document</title>
 </head>
 <body>
 
-<!--<style>
+<style>
     <?php include "paygateStyle.css";?>
-</style>-->
+</style>
     <div class="all">
 
         <div class="payNav">
@@ -230,7 +230,7 @@ session_start();
                                     <?php echo $_SESSION['name']; ?>  
                                 </div><br>
                                 <div class="total">
-                                    R 0.00
+                                    R 
                                 </div>
                             </div>
                         </div>
@@ -241,7 +241,7 @@ session_start();
                             <div></div>
                             <div></div>
                             <div class="pbdName">Base Price <hr></div>
-                            <div class="pbdAmt">R <?php echo $_SESSION['price']?> <hr></div>
+                            <div class="pbdAmt">R <?php echo number_format((float)$_SESSION['price'], 2, '.', '')?> <hr></div>
                         </div>
                         
                         <div class="pbdContain">
@@ -259,9 +259,9 @@ session_start();
                                     <div class="pbdAmt">R00.00</div> 
                                     <div class="name delivery">Delivery Charge</div> 
                                     <div class="pbdAmt deliveryAmt" >R1500.00</div>
-                                    <?php $vat=((int)$_SESSION['price'])*0.15 ?>
+                                    <?php $vat=((float)$_SESSION['price'])*0.15;?> 
                                     <div class="name">VAT 15%</div> 
-                                    <div class="pbdAmt">R<?php echo $vat?></div>
+                                    <div class="pbdAmt">R<?php echo number_format((float)$vat, 2, '.', '')?></div>
                                     <!--<div class="name">Reservation Fee</div><div class="pbdAmt"></div>--> 
                                 </div>
                                 <hr>
@@ -290,7 +290,7 @@ session_start();
                             <div class="pbdAmt"> </div>
                         </div>
     
-                        <button class="checkout" name="submit" value="<?php echo $_SESSION['price']?>.00">Place Order</button>
+                        <button class="checkout" name="submit" value="<?php echo number_format((float)$_SESSION['price'], 2, '.', '')?>">Place Order</button>
                     </div> 
                     
                 </form>
@@ -303,10 +303,12 @@ session_start();
                 <button  class="prev2 prev">Previous</button>
                 <button  class="prev3 prev">Previous</button>
                 <button  class="prev4 prev">Previous</button>
+
+<!--P O P U P-->
                 <div class="popupbar">
                     <button id="popupBtn" >^</button>
                     <div class="popupInfo">  
-                        <img src="https://imageio.forbes.com/specials-images/imageserve/5d35eacaf1176b0008974b54/2020-Chevrolet-Corvette-Stingray/0x0.jpg?format=jpg&crop=4560,2565,x790,y784,safe&width=1440">
+                        <img src="<?php echo $_SESSION['picture'] ?>">
 
                         <div class="popupCarDetails">
                             <div class="specs">
@@ -316,7 +318,7 @@ session_start();
                 
                             <div class="specs total">
                                 <label>TOTAL </label>
-                                <p class="total">R<?php echo $_SESSION['price']?></p>
+                                <p class="total">R<?php echo number_format((float)$_SESSION['price'], 2, '.', '')?></p>
                 
                             </div>
                 
@@ -326,6 +328,9 @@ session_start();
                    
               
             </div>
+
+
+
     
 <!--SIDE BAR -->   
         <div class="carDetails">
@@ -340,7 +345,7 @@ session_start();
     
                 <div class="specs total">
                     <label>TOTAL </label>
-                    <p class="total">R<?php echo $_SESSION['price']?></p>
+                    <p class="total">R<?php echo number_format((float)$_SESSION['price'], 2, '.', '')?>?></p>
     
                 </div>
     
