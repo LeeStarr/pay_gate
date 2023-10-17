@@ -74,14 +74,15 @@ hr{
   width: 35px;
   height: 35px; 
   text-align: center;
+  justify-content: center;
   font-weight: 600;
   font-size: 20px;
 }
 
 #span1{
   color:#fff;
-  background-color:#1c69d4; 
-  border: #1c69d4 2px solid;
+  background-color:#007bff; 
+  border: #007bff 2px solid;
 }
 
 /* C O N T A I N E R */
@@ -317,7 +318,9 @@ background-color: #fff;
   padding-top: 15px;
   padding-bottom: 15px;
 }
-
+.tblInput{
+  display: flex;
+}
 .pbdName,.pbdAmt{
 font-size:large;
 }
@@ -354,7 +357,7 @@ button{
   height: 50px;
   width: 300px;
   color: white;
-  background-color: #1c69d4;
+  background-color: #007bff;
   cursor: pointer;
   transition: .3s;
   border-radius: 10px;
@@ -364,7 +367,7 @@ button{
 }
 
 button:hover{
-  background-color: #0f3d7e;
+  background-color: #1c69d4;
   font-size: larger;
 }
 
@@ -410,52 +413,73 @@ form button{
 /*Side bar*/
 .carDetails{
   box-shadow: 0 5px 10px rgba(0,0,0,.5);
-  height: 450px;
+  height: 510px;
   background: none;
   position: sticky;
   top: 30px;
   margin-top: 30px;
+  
 }
 
-
+.resInfo{
+  color: #333;
+  border: 2px #333 solid;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  text-transform: lowercase;
+  background-color: transparent;
+  border-radius: 50%;
+  transition: .3s;
+}
+.resInfo:hover{
+  cursor: pointer;
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  font-weight: bolder;
+}
 .carInfo{
   display: grid;
   grid-template-rows: (3,1fr);
-  row-gap: 15px;
+  row-gap: 10px;
+  padding: 10px;
 }
 
-.specs{
+.carInfo .total{
   border-bottom: rgb(231, 230, 230) solid 1px;
-  height: 100px;
-  padding-bottom: 10px;
-
+  
 }
 
-.specs.total{
-  border: none;
+.reserve{
+  display: flex;
+  gap: 60px;
+}
+
+.extraInfo{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  border-bottom: #8e8e8e solid 2px;
 }
 
 .specs label{
   font-weight: 400;
   color: #333;
-  margin-left: 10px;
 }
 .specs p{
   color: #8e8e8e;
-  margin-top: 20px;
-  margin-left: 20px;
 }
 
 .specs .model{
   margin-left: 80px;
   color: #262626;
-  font-size: 25px;
+  font-size: 20px;
   font-family: 'Times New Roman', Times, serif;
 }
 
 .specs .total{
   margin-left: 80px;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .carImg{
@@ -508,7 +532,7 @@ form button{
   .popupbar{
     position: fixed;
     width: 95%;
-    top: 500px;
+    bottom: -100px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -529,13 +553,21 @@ form button{
   }
   .popupInfo{
     position: relative;
-    border-top: #1c69d4 5px solid;
+    border-top: #007bff 5px solid;
     background-color: #e6e6e6;
     width: 100%;
     display: flex;
   }
   .popupInfo img{
-    width: 300px;
+    width: 40%;
+    margin: 10px;
+  }
+  .popupInfo .popupCarDetails{
+    flex-basis: 60%;
+  }
+
+  .resInfo{
+    display: none;
   }
 }
 
@@ -581,8 +613,31 @@ form button{
   .cont4, .prev3{
     right: 10px;
   }
+  .popupInfo{
+    display: block;
+  }
+  .popupInfo img{
+    display: none;
+  }
 
+}
 
+@media (max-width:480px)
+{
+  .cont1{
+    top: 700px;
+  }
+
+  .businessInfo{
+    display: block;
+  }
+
+  .businessInfo .map{
+    display: none;
+  }
+  .section2{
+    display: none;
+  }
 }
 
 

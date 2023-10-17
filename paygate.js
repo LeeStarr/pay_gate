@@ -107,9 +107,13 @@ function checkID(){
         idvalue.style.borderBottom="red 2px solid";
         errorMsg.innerHTML="This field is mandatory"
         return false;
-    }else if((option==1) && (input.length<13 || input.length>13 || !input.match(/^\d+$/))){
+    }else if((option==1) && !input.match(/^\d+$/)){
         idvalue.style.borderBottom="red 2px solid";
-        errorMsg.innerHTML="Must consist of 13 digits only"
+        errorMsg.innerHTML="must contain numerical values only";
+    }
+    else if((option==1) && (input.length<13 || input.length>13)){
+        idvalue.style.borderBottom="red 2px solid";
+        errorMsg.innerHTML="Must consist of 13 digits"
         return false;
     }
     else{
@@ -127,6 +131,9 @@ function checkCell(){
         cell.style.borderBottom="red 2px solid";
         errorMsg.innerHTML="This field is mandatory"
         return false;
+    }else if(!input.match(/^\d+$/)){
+        cell.style.borderBottom="red 2px solid";
+        errorMsg.innerHTML="must contain numerical values only";
     }else if(!input.match(/^0[6-8][0-9]{8}$/)){
         cell.style.borderBottom="red 2px solid";
         errorMsg.innerHTML="Invalid cell phone number"
@@ -146,7 +153,11 @@ function checkHouseNum(){
         housenum.style.borderBottom="red 2px solid";
         errorMsg.innerHTML="This field is mandatory"
         return false;
-    }else{
+    }else if(!input.match(/^\d+$/)){
+        housenum.style.borderBottom="red 2px solid";
+        errorMsg.innerHTML="must contain numerical values only";
+    }
+    else{
         housenum.style.borderBottom="2px solid #bbb";
        errorMsg.innerHTML="";
        return true;
@@ -188,7 +199,11 @@ function checkCode(){
         code.style.borderBottom="red 2px solid";
         errorMsg.innerHTML="This field is mandatory"
         return false;
-    }else if(input.length< 4){
+    }else if(!input.match(/^\d+$/)){
+        code.style.borderBottom="red 2px solid";
+        errorMsg.innerHTML="must contain numerical values only";
+    }
+    else if(input.length< 4){
         code.style.borderBottom="red 2px solid";
         errorMsg.innerHTML="Must be 4 digits long"
         return false;
@@ -411,12 +426,12 @@ cont1.addEventListener('click',()=>{
         cont1.style.transform="translateX(-1000px)";
         cont3.style.transform="translateX(0)";
         prev2.style.transform="translateX(0)";
-        span1.style.color="#1c69d4";
+        span1.style.color="#007bff";
         span2.style.color="#fff";
-        span2.style.border="#1c69d4 2px solid";
-        span2.style.backgroundColor="#1c69d4";
-        firstRight.style.backgroundColor="#1c69d4";
-        firstLeft.style.backgroundColor="#1c69d4";
+        span2.style.border="#007bff 2px solid";
+        span2.style.backgroundColor="#007bff";
+        firstRight.style.backgroundColor="#007bff";
+        firstLeft.style.backgroundColor="#007bff";
         section1.style.fontWeight="normal";
         section2.style.fontWeight="bolder";
         //summary information
@@ -443,12 +458,12 @@ cont2.addEventListener('click',()=>{
         page3.style.transform="translateX(0)";
         cont3.style.transform="translateX(0)";
         prev2.style.transform="translateX(0)";
-        span1.style.color="#1c69d4";
+        span1.style.color="#007bff";
         span2.style.color="#fff";
-        span2.style.backgroundColor="#1c69d4"
-        span2.style.border="#1c69d4 2px solid";
-        firstRight.style.backgroundColor="#1c69d4";
-        firstLeft.style.backgroundColor="#1c69d4";
+        span2.style.backgroundColor="#007bff"
+        span2.style.border="#007bff 2px solid";
+        firstRight.style.backgroundColor="#007bff";
+        firstLeft.style.backgroundColor="#007bff";
         section1.style.fontWeight="normal";
         section2.style.fontWeight="bolder";
         document.documentElement.scrollTop = 0;   
@@ -482,12 +497,12 @@ cont3.addEventListener('click',()=>{
         page4.style.transform="translateX(0)";
         cont4.style.transform="translateX(0)";
         prev3.style.transform="translateX(0)";
-        span2.style.color="#1c69d4";
+        span2.style.color="#007bff";
         span3.style.color="#fff";
-        span3.style.backgroundColor="#1c69d4"
-        span3.style.border="#1c69d4 2px solid";
-        secondRight.style.backgroundColor="#1c69d4";
-        secondLeft.style.backgroundColor="#1c69d4";
+        span3.style.backgroundColor="#007bff"
+        span3.style.border="#007bff 2px solid";
+        secondRight.style.backgroundColor="#007bff";
+        secondLeft.style.backgroundColor="#007bff";
         section2.style.fontWeight="normal";
         section3.style.fontWeight="bolder";
         document.documentElement.scrollTop = 0;   
@@ -516,8 +531,8 @@ prev2.addEventListener('click',()=>{
     span2.style.backgroundColor="#fff";
     span2.style.border="silver 2px solid";
     span1.style.color="#fff";
-    span1.style.backgroundColor="#1c69d4"
-    span1.style.border="#1c69d4 2px solid";
+    span1.style.backgroundColor="#007bff"
+    span1.style.border="#007bff 2px solid";
     section1.style.fontWeight="bolder";
     section3.style.fontWeight="normal";
     firstRight.style.backgroundColor="silver";
@@ -531,30 +546,34 @@ prev2.addEventListener('click',()=>{
 //forward to page 5
 cont4.addEventListener('click',()=>{
     //summary information
+     
     if(selectedDeliveryOp=='collect'){
         delivery.style.display="none";
         deliveryAmt.style.display="none";
         aquireOp.innerHTML="Collection";
         sumDateLabel.innerHTML="Date for collection";
+        
     }else{
         delivery.style.display="block";
         deliveryAmt.style.display="block";
         aquireOp.innerHTML="Delivery";
         sumDateLabel.innerHTML="Date for delivery";
     }
+   
     sumDateDisplay.innerHTML=date.value;
+    
     if (checkDate()==true){
         page4.style.transform=" translateX(-1000px)";
         cont4.style.transform=" translateX(-1000px)";
         prev3.style.transform=" translateX(-1000px)";
         page5.style.transform="translateX(0)";
         prev4.style.transform="translateX(0)"
-        span3.style.color="#1c69d4";
+        span3.style.color="#007bff";
         span4.style.color="#fff";
-        span4.style.backgroundColor="#1c69d4"
-        span4.style.border="#1c69d4 2px solid";
-        thirdRight.style.backgroundColor="#1c69d4";
-        thirdLeft.style.backgroundColor="#1c69d4";
+        span4.style.backgroundColor="#007bff"
+        span4.style.border="#007bff 2px solid";
+        thirdRight.style.backgroundColor="#007bff";
+        thirdLeft.style.backgroundColor="#007bff";
         section3.style.fontWeight="normal";
         section4.style.fontWeight="bolder";
         document.documentElement.scrollTop = 0; 
@@ -574,8 +593,8 @@ prev3.addEventListener('click',()=>{
     span3.style.backgroundColor="#fff";
     span3.style.border="silver 2px solid";
     span2.style.color="#fff";
-    span2.style.backgroundColor="#1c69d4"
-    span2.style.border="#1c69d4 2px solid";
+    span2.style.backgroundColor="#007bff"
+    span2.style.border="#007bff 2px solid";
     section2.style.fontWeight="bolder";
     section3.style.fontWeight="normal";
     secondRight.style.backgroundColor="silver";
@@ -604,8 +623,8 @@ prev4.addEventListener('click',()=>{
     span4.style.backgroundColor="#fff";
     span4.style.border="silver 2px solid";
     span3.style.color="#fff";
-    span3.style.backgroundColor="#1c69d4"
-    span3.style.border="#1c69d4 2px solid";
+    span3.style.backgroundColor="#007bff"
+    span3.style.border="#007bff 2px solid";
     section3.style.fontWeight="bolder";
     section4.style.fontWeight="normal";
     thirdRight.style.backgroundColor="silver";
@@ -618,10 +637,10 @@ prev4.addEventListener('click',()=>{
 popupBtn.addEventListener('click', ()=>{
     if (popupBtn.innerHTML=='^')
     {
-        popupBar.style.top="300px";
+        popupBar.style.bottom="0";
         popupBtn.innerHTML="v";
     }else{
-        popupBar.style.top="500px";
+        popupBar.style.bottom="-100px";
         popupBtn.innerHTML="^";
     }
 })
